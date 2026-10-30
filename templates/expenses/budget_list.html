@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Budgets | SmartExp{% endblock %}
+{% block header_title %}Budget Planning{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+            <h3 class="text-2xl font-bold">Monthly Budgets</h3>
+            <p class="text-slate-500">Track your spending limits by category.</p>
+        </div>
+        <a href="{% url 'expenses:budget_add' %}" class="bg-secondary text-white px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:scale-105 transition-all shadow-lg shadow-secondary/20">
+            <i data-lucide="target" class="w-5 h-5"></i>
+            <span>Set New Budget</span>
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for budget in budgets %}
+        <div class="glass p-8 rounded-[32px] relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br opacity-5 -mr-8 -mt-8 rounded-full transition-transform group-hover:scale-150" style="background-color: {{ budget.category.color }}"></div>
+            
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background-color: {{ budget.category.color }}15; color: {{ budget.category.color }}">
+                    <i data-lucide="{{ budget.category.icon|default:'box' }}" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold">{{ budget.category.name }}</h4>
+                    <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">{{ budget.get_month_display|default:budget.month }} / {{ budget.year }}</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="flex items-center justify-between text-sm font-bold">
+                    <span class="text-slate-500">Budget Limit</span>
+                    <span>₹{{ budget.amount }}</span>
+                </div>
+                
+                <!-- Progress Bar logic would need calculated spend from view -->
+                <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div class="h-full {% if budget.percentage > 90 %}bg-red-500{% elif budget.percentage > 70 %}bg-yellow-500{% else %}bg-primary{% endif %}" style="width: {{ budget.percentage }}%"></div>
+                </div>
+                
+                <div class="flex items-center justify-between text-xs font-bold uppercase">
+                    <span class="{% if budget.percentage > 90 %}text-red-500{% else %}text-slate-400{% endif %}">{{ budget.percentage|floatformat:0 }}% Used</span>
+                    <span class="text-primary">₹{{ budget.spent|floatformat:2 }} Spent</span>
+                </div>
+            </div>
+
+            <div class="mt-8 flex items-center gap-3 pt-6 border-t border-slate-50 dark:border-slate-800">
+                <a href="#" class="text-sm font-bold text-slate-500 hover:text-primary transition-colors">Edit Budget</a>
+                <span class="text-slate-200">|</span>
+                <a href="#" class="text-sm font-bold text-slate-500 hover:text-red-500 transition-colors">Reset</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="lg:col-span-3 py-20 text-center glass rounded-[32px]">
+            <div class="w-20 h-20 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="target" class="w-10 h-10"></i>
+            </div>
+            <h4 class="text-xl font-bold">No budgets set</h4>
+            <p class="text-slate-500 mt-2">Start planning your finances by setting category budgets.</p>
+            <a href="{% url 'expenses:budget_add' %}" class="mt-6 inline-block bg-secondary text-white px-8 py-3 rounded-2xl font-bold shadow-lg shadow-secondary/20">Set Your First Budget</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Project Info | SmartExp{% endblock %}
+{% block header_title %}About Smart Expense Tracker{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto space-y-12 pb-20">
+    <!-- Intro Section -->
+    <div class="text-center">
+        <h3 class="text-4xl font-bold mb-6">What is SmartExp?</h3>
+        <p class="text-xl text-slate-600 leading-relaxed">
+            SmartExp is your personal financial companion. It's not just a list of expenses; it's a smart system designed to help you understand where your money goes, stay within your limits, and make better financial decisions without needing a degree in finance.
+        </p>
+    </div>
+
+    <!-- Core Benefits -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="glass p-8 rounded-[40px] border-blue-100">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                <i data-lucide="eye"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-4">Crystal Clear Visibility</h4>
+            <p class="text-slate-500">Stop wondering where your money went at the end of the month. See your spending broken down by categories like Food, Shopping, and Bills in real-time.</p>
+        </div>
+        <div class="glass p-8 rounded-[40px] border-pink-100">
+            <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                <i data-lucide="target"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-4">Zero Overspending</h4>
+            <p class="text-slate-500">Set monthly limits for specific categories. Our smart progress bars change color to warn you when you're getting close to your limit.</p>
+        </div>
+    </div>
+
+    <!-- How it works (Non-technical) -->
+    <div class="glass p-10 rounded-[40px]">
+        <h4 class="text-2xl font-bold mb-10 text-center">How does it work?</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="text-center">
+                <div class="text-4xl font-bold text-primary/20 mb-4">01</div>
+                <h5 class="font-bold mb-2">Track</h5>
+                <p class="text-sm text-slate-500">Simply enter what you spent, how much, and what it was for.</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-primary/20 mb-4">02</div>
+                <h5 class="font-bold mb-2">Analyze</h5>
+                <p class="text-sm text-slate-500">The system automatically sorts your data into beautiful charts and insights.</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-primary/20 mb-4">03</div>
+                <h5 class="font-bold mb-2">Save</h5>
+                <p class="text-sm text-slate-500">Use the reports and budget alerts to find ways to save more money every month.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q&A Section -->
+    <div class="space-y-6">
+        <h4 class="text-2xl font-bold text-center mb-10">Common Questions (Q&A)</h4>
+        
+        <div class="space-y-4">
+            <div class="glass p-6 rounded-3xl">
+                <h5 class="font-bold text-lg mb-2">Is my data secure?</h5>
+                <p class="text-slate-600">Absolutely. We use professional-grade security measures to ensure that only you can access your financial records. Your privacy is our top priority.</p>
+            </div>
+            <div class="glass p-6 rounded-3xl">
+                <h5 class="font-bold text-lg mb-2">Can I use it on my phone?</h5>
+                <p class="text-slate-600">Yes! SmartExp is built with a "mobile-first" approach, meaning it looks and works great whether you're on a computer, a tablet, or your smartphone.</p>
+            </div>
+            <div class="glass p-6 rounded-3xl">
+                <h5 class="font-bold text-lg mb-2">Can I export my data for my accountant?</h5>
+                <p class="text-slate-600">Yes, you can download a professional PDF summary or a clean Excel-ready CSV file with just one click in the Reports section.</p>
+            </div>
+            <div class="glass p-6 rounded-3xl">
+                <h5 class="font-bold text-lg mb-2">Does it support different currencies?</h5>
+                <p class="text-slate-600">Yes, you can go to the Settings page and choose your preferred currency symbol (like ₹, $, or €) to match your local needs.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="bg-primary p-12 rounded-[40px] text-white text-center shadow-2xl shadow-primary/30">
+        <h4 class="text-3xl font-bold mb-4">Ready to start your journey?</h4>
+        <p class="text-primary-100 mb-8 max-w-md mx-auto">Join thousands of users who have transformed their relationship with money using SmartExp.</p>
+        <a href="{% url 'core:dashboard' %}" class="inline-block bg-white text-primary px-10 py-4 rounded-2xl font-bold hover:scale-105 transition-all">Go to My Dashboard</a>
+    </div>
+</div>
+{% endblock %}

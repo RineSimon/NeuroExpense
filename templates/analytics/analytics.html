@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Analytics | SmartExp{% endblock %}
+{% block header_title %}Smart Insights{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+    <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold">Financial Analytics</h3>
+        <p class="text-slate-500">Deeper insights into your spending habits for {% now "F Y" %}.</p>
+    </div>
+
+    <!-- Analytics Overview Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass p-8 rounded-[40px]">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4">
+                <i data-lucide="calculator"></i>
+            </div>
+            <p class="text-slate-500 text-sm font-bold uppercase tracking-wider">Avg. Daily</p>
+            <h4 class="text-2xl font-bold mt-2">₹{{ avg_daily|floatformat:2 }}</h4>
+        </div>
+
+        <div class="glass p-8 rounded-[40px]">
+            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-4">
+                <i data-lucide="crystal-ball" class="w-6 h-6"></i>
+            </div>
+            <p class="text-slate-500 text-sm font-bold uppercase tracking-wider">Predicted (Month)</p>
+            <h4 class="text-2xl font-bold mt-2">₹{{ predicted|floatformat:2 }}</h4>
+        </div>
+
+        <div class="glass p-8 rounded-[40px]">
+            <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center mb-4">
+                <i data-lucide="crown"></i>
+            </div>
+            <p class="text-slate-500 text-sm font-bold uppercase tracking-wider">Top Category</p>
+            <h4 class="text-2xl font-bold mt-2">{{ top_cat.category__name|default:"N/A" }}</h4>
+        </div>
+
+        <div class="glass p-8 rounded-[40px]">
+            <div class="w-12 h-12 {% if week_diff_percent > 0 %}bg-red-100 text-red-600{% else %}bg-green-100 text-green-600{% endif %} rounded-2xl flex items-center justify-center mb-4">
+                <i data-lucide="trending-{% if week_diff_percent > 0 %}up{% else %}down{% endif %}"></i>
+            </div>
+            <p class="text-slate-500 text-sm font-bold uppercase tracking-wider">Vs Last Week</p>
+            <h4 class="text-2xl font-bold mt-2">{{ week_diff_percent|floatformat:1 }}%</h4>
+        </div>
+    </div>
+
+    <!-- AI Insights Section -->
+    <div class="glass p-10 rounded-[40px] bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl -mr-32 -mt-32"></div>
+        
+        <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 bg-primary/20 text-primary rounded-xl flex items-center justify-center">
+                    <i data-lucide="sparkles"></i>
+                </div>
+                <h4 class="text-xl font-bold">AI Spending Habits Summary</h4>
+            </div>
+            
+            <div class="space-y-6 max-w-2xl text-slate-300">
+                <p class="text-lg">
+                    Based on your recent transactions, your spending on <span class="text-white font-bold">{{ top_cat.category__name|default:"various items" }}</span> is your primary expense.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex gap-3">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 shrink-0"></i>
+                        <span>Your daily average has {% if week_diff_percent > 0 %}increased{% else %}decreased{% endif %} compared to the previous period.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <i data-lucide="alert-circle" class="w-5 h-5 text-yellow-400 shrink-0"></i>
+                        <span>{% if predicted > 5000 %}You might exceed a safe spending threshold this month.{% else %}You are maintaining a healthy spending rate.{% endif %}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coming Soon Section -->
+    <div class="text-center py-20">
+        <h4 class="text-2xl font-bold mb-4">Wait, there's more coming!</h4>
+        <p class="text-slate-500 max-w-md mx-auto mb-8">
+            Our data scientists are working on <strong>Analytics 2.0</strong> featuring interactive heatmaps and multi-currency trend analysis.
+        </p>
+        <a href="?join_beta=1" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all shadow-xl shadow-primary/20">
+            <i data-lucide="rocket"></i>
+            <span>Join Beta Waitlist</span>
+        </a>
+    </div>
+</div>
+{% endblock %}

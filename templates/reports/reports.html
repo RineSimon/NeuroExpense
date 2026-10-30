@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Reports | SmartExp{% endblock %}
+{% block header_title %}Data Export & Reports{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto space-y-10">
+    <div class="text-center">
+        <h3 class="text-3xl font-bold">Generate Your Reports</h3>
+        <p class="text-slate-500 mt-2">Export your financial data for taxes, accounting, or personal tracking.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- PDF Report -->
+        <div class="glass p-10 rounded-[40px] text-center group hover:border-primary transition-all">
+            <div class="w-20 h-20 bg-red-100 text-red-500 rounded-3xl flex items-center justify-center mx-auto mb-8 transition-transform group-hover:rotate-12">
+                <i data-lucide="file-text" class="w-10 h-10"></i>
+            </div>
+            <h4 class="text-2xl font-bold mb-4">Professional PDF</h4>
+            <p class="text-slate-500 mb-8 text-sm leading-relaxed">
+                Download a polished PDF summary with charts, categorized totals, and full transaction history. Perfect for sharing or printing.
+            </p>
+            <a href="{% url 'reports:export_pdf' %}" class="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20">
+                <i data-lucide="download"></i>
+                <span>Download PDF</span>
+            </a>
+        </div>
+
+        <!-- CSV Export -->
+        <div class="glass p-10 rounded-[40px] text-center group hover:border-emerald-500 transition-all">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-8 transition-transform group-hover:rotate-12">
+                <i data-lucide="table" class="w-10 h-10"></i>
+            </div>
+            <h4 class="text-2xl font-bold mb-4">Spreadsheet (CSV)</h4>
+            <p class="text-slate-500 mb-8 text-sm leading-relaxed">
+                Export all your transactions in a clean CSV format. Compatible with Excel, Google Sheets, and other accounting software.
+            </p>
+            <a href="{% url 'reports:export_csv' %}" class="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-600/20">
+                <i data-lucide="file-spreadsheet"></i>
+                <span>Export CSV</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Quick Stats Summary -->
+    <div class="glass p-8 rounded-[40px] border border-slate-100">
+        <h5 class="text-lg font-bold mb-6 flex items-center gap-2">
+            <i data-lucide="info" class="w-5 h-5 text-primary"></i>
+            Report Coverage
+        </h5>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Total Transactions</p>
+                <p class="text-xl font-bold">{{ user.expenses.count }}</p>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Categories</p>
+                <p class="text-xl font-bold">9</p>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Period</p>
+                <p class="text-xl font-bold">Lifetime</p>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Currency</p>
+                <p class="text-xl font-bold">{{ user.profile.currency }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

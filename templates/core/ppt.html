@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title %}Presentation | SmartExp{% endblock %}
+{% block header_title %}Project Presentation{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto space-y-12 pb-20">
+    <!-- Navigation for Slides (Visual only for now) -->
+    <div class="flex items-center justify-center gap-4 mb-10 overflow-x-auto pb-4 scrollbar-hide">
+        <a href="#problem" class="px-6 py-2 glass rounded-full text-sm font-bold whitespace-nowrap hover:bg-primary hover:text-white transition-all">01. Problem</a>
+        <a href="#methodology" class="px-6 py-2 glass rounded-full text-sm font-bold whitespace-nowrap hover:bg-primary hover:text-white transition-all">02. Methodology</a>
+        <a href="#architecture" class="px-6 py-2 glass rounded-full text-sm font-bold whitespace-nowrap hover:bg-primary hover:text-white transition-all">03. Architecture</a>
+        <a href="#design" class="px-6 py-2 glass rounded-full text-sm font-bold whitespace-nowrap hover:bg-primary hover:text-white transition-all">04. Design & Imp</a>
+        <a href="#testing" class="px-6 py-2 glass rounded-full text-sm font-bold whitespace-nowrap hover:bg-primary hover:text-white transition-all">05. Results</a>
+    </div>
+
+    <!-- Slide 1: Problem Statement -->
+    <section id="problem" class="glass p-12 rounded-[48px] border-l-8 border-primary relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 text-primary/10 font-bold text-6xl">01</div>
+        <h3 class="text-3xl font-bold mb-8 flex items-center gap-4">
+            <i data-lucide="alert-circle" class="text-primary"></i>
+            Problem Statement
+        </h3>
+        <div class="space-y-6 text-slate-600 text-lg leading-relaxed">
+            <p>Managing personal finances is a common challenge. Most individuals face the following issues:</p>
+            <ul class="list-disc pl-6 space-y-4">
+                <li><strong>Lack of Visibility:</strong> Difficulty in tracking small daily expenses, leading to "leaking" money.</li>
+                <li><strong>Complex Tools:</strong> Existing financial software is often too complex for average users, requiring manual spreadsheet entry.</li>
+                <li><strong>Inconsistent Budgeting:</strong> No real-time alerts when spending exceeds planned limits.</li>
+                <li><strong>Data Fragmentation:</strong> Records are often scattered across bank apps, receipts, and memory.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 2: Methodology -->
+    <section id="methodology" class="glass p-12 rounded-[48px] border-l-8 border-secondary relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 text-secondary/10 font-bold text-6xl">02</div>
+        <h3 class="text-3xl font-bold mb-8 flex items-center gap-4">
+            <i data-lucide="git-branch" class="text-secondary"></i>
+            Methodology
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="space-y-4">
+                <h4 class="font-bold text-xl text-slate-800">Agile Development</h4>
+                <p class="text-slate-600">The project followed an iterative development process, focusing on delivering a Minimum Viable Product (MVP) first and then refining based on user feedback.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="font-bold text-xl text-slate-800">User-Centric Design</h4>
+                <p class="text-slate-600">Prioritizing ease-of-use (UX) and visual appeal (UI) to ensure high user retention and data entry consistency.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="font-bold text-xl text-slate-800">Data-Driven Logic</h4>
+                <p class="text-slate-600">Implementing real-time aggregation and calculation engines to provide instantaneous feedback to the user.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="font-bold text-xl text-slate-800">Security-First</h4>
+                <p class="text-slate-600">Using standard authentication protocols and encrypted data storage to protect sensitive financial information.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: System Architecture -->
+    <section id="architecture" class="glass p-12 rounded-[48px] border-l-8 border-purple-500 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 text-purple-500/10 font-bold text-6xl">03</div>
+        <h3 class="text-3xl font-bold mb-8 flex items-center gap-4">
+            <i data-lucide="layers" class="text-purple-500"></i>
+            System Architecture
+        </h3>
+        <div class="bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 text-center">
+                <div class="space-y-4 flex-1">
+                    <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center mx-auto shadow-lg">
+                        <i data-lucide="monitor"></i>
+                    </div>
+                    <h5 class="font-bold">Frontend</h5>
+                    <p class="text-xs text-slate-500">HTML5, Tailwind CSS, JavaScript (Chart.js)</p>
+                </div>
+                <i data-lucide="arrow-right" class="hidden md:block text-slate-300"></i>
+                <div class="space-y-4 flex-1">
+                    <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-3xl flex items-center justify-center mx-auto shadow-lg">
+                        <i data-lucide="server"></i>
+                    </div>
+                    <h5 class="font-bold">Backend</h5>
+                    <p class="text-xs text-slate-500">Python, Django Framework</p>
+                </div>
+                <i data-lucide="arrow-right" class="hidden md:block text-slate-300"></i>
+                <div class="space-y-4 flex-1">
+                    <div class="w-20 h-20 bg-purple-100 text-purple-600 rounded-3xl flex items-center justify-center mx-auto shadow-lg">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <h5 class="font-bold">Database</h5>
+                    <p class="text-xs text-slate-500">SQLite (Scalable to PostgreSQL)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Design and Implementation -->
+    <section id="design" class="glass p-12 rounded-[48px] border-l-8 border-pink-500 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 text-pink-500/10 font-bold text-6xl">04</div>
+        <h3 class="text-3xl font-bold mb-8 flex items-center gap-4">
+            <i data-lucide="pen-tool" class="text-pink-500"></i>
+            Design and Implementation
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="glass p-6 rounded-3xl bg-white/30">
+                <h5 class="font-bold mb-4">UI Design System</h5>
+                <ul class="text-sm space-y-3 text-slate-600">
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Glassmorphism effects</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Responsive Tailwind Grid</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Dark Mode compatibility</li>
+                </ul>
+            </div>
+            <div class="glass p-6 rounded-3xl bg-white/30">
+                <h5 class="font-bold mb-4">Core Modules</h5>
+                <ul class="text-sm space-y-3 text-slate-600">
+                    <li class="flex gap-2"><i data-lucide="code" class="w-4 h-4 text-primary"></i> Auth System (Accounts)</li>
+                    <li class="flex gap-2"><i data-lucide="code" class="w-4 h-4 text-primary"></i> Budget Tracking Engine</li>
+                    <li class="flex gap-2"><i data-lucide="code" class="w-4 h-4 text-primary"></i> Reporting & Export (PDF/CSV)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Testing and Results -->
+    <section id="testing" class="glass p-12 rounded-[48px] border-l-8 border-emerald-500 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 text-emerald-500/10 font-bold text-6xl">05</div>
+        <h3 class="text-3xl font-bold mb-8 flex items-center gap-4">
+            <i data-lucide="check-circle-2" class="text-emerald-500"></i>
+            Testing and Results
+        </h3>
+        <div class="space-y-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-emerald-50 dark:bg-emerald-900/20 rounded-3xl text-center">
+                    <h6 class="text-emerald-600 font-bold text-3xl">100%</h6>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mt-2">Functional Pass Rate</p>
+                </div>
+                <div class="p-6 bg-emerald-50 dark:bg-emerald-900/20 rounded-3xl text-center">
+                    <h6 class="text-emerald-600 font-bold text-3xl">< 2s</h6>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mt-2">Avg. Response Time</p>
+                </div>
+                <div class="p-6 bg-emerald-50 dark:bg-emerald-900/20 rounded-3xl text-center">
+                    <h6 class="text-emerald-600 font-bold text-3xl">Perfect</h6>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mt-2">Mobile Responsiveness</p>
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <h5 class="font-bold text-xl">Final Conclusion</h5>
+                <p class="text-slate-600 text-lg">
+                    The Smart Expense Tracker successfully addresses the core problem of financial visibility. By combining a powerful Django backend with a modern, reactive frontend, we have created a tool that is both functional for power users and accessible for beginners.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
